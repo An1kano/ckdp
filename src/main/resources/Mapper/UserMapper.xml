@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ckzs.ckdp.Mapper.UserMapper">
+    <!--  这里的id是我们之前在接口定义的方法名， resultType是指返回结果的类型我们查询的是用户数据所以返回接口是User -->
+    <select id="getByUsername" resultType="org.ckzs.ckdp.pojo.User">
+        SELECT * FROM users WHERE username = #{username}
+    </select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+            INSERT INTO users(username,password) VALUES (#{username},#{password})
+    </insert>
+</mapper>
