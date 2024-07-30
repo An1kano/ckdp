@@ -34,6 +34,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- 更改spring-plugin-core版本，解决与swagger导包冲突问题 -->
+        <dependency>
+            <groupId>org.springframework.plugin</groupId>
+            <artifactId>spring-plugin-core</artifactId>
+            <version>2.0.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.plugin</groupId>
+            <artifactId>spring-plugin-metadata</artifactId>
+            <version>2.0.0.RELEASE</version>
+        </dependency>
 
         <dependency>
             <groupId>com.mysql</groupId>
@@ -56,12 +67,16 @@
             <version>3.0.3</version>
             <scope>test</scope>
         </dependency>
-
         <!--mybatis        -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>3.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>2.1.0</version>
         </dependency>
 
         <!--redis        -->

@@ -5,7 +5,7 @@ import org.ckzs.ckdp.pojo.User;
 
 @Mapper
 public interface UserMapper {
-    public User getByUsername(String username);
+    User getByUsername(String username);
 
     void insert(User user);
 }

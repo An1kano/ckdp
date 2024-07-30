@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.ckzs.ckdp.pojo.JwtProfile;
+import org.ckzs.ckdp.pojo.Shop;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +23,6 @@ class CkdpApplicationTests {
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
-
     @Test
     public void testRedis() {
         // 设置值
@@ -45,6 +45,14 @@ class CkdpApplicationTests {
         if(redisTemplate.hasKey("testKey")){
             System.out.println("存在");
         }
+
+    }
+    @Test
+    public void test2(){
+        Shop shop=new Shop();
+        shop.setShopId(1);
+        shop.setShopName("CKZS");
+        System.out.println(shop);
     }
     @Test
     public void tokenTest(){
