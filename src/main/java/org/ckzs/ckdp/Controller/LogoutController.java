@@ -1,6 +1,7 @@
 package org.ckzs.ckdp.Controller;
 
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.ckzs.ckdp.pojo.BaseContext;
 import org.ckzs.ckdp.pojo.JwtProfile;
@@ -20,6 +21,7 @@ public class LogoutController {
     @Autowired
     private RedisTemplate<String,String> redisTemplate;
 
+    @Operation(summary = "用户登出")
     @PostMapping("/logout")
     public Result logout(@RequestHeader(JwtProfile.TOKEN_KEY) String token){
         redisTemplate.opsForValue().set(token,"logout",JwtProfile.TIME_LIMIT, TimeUnit.MILLISECONDS);

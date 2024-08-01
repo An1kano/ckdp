@@ -2,6 +2,7 @@ package org.ckzs.ckdp.Controller;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.ckzs.ckdp.DTO.UserDTO;
 import org.ckzs.ckdp.Service.UserService;
@@ -24,7 +25,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-
+    @Operation(summary = "用户登陆")
     @PostMapping("")
     public Result<UserVO> login(@RequestBody UserDTO userDTO){
 
@@ -54,6 +55,7 @@ public class LoginController {
     }
 
 
+    @Operation(summary = "用户注册")
     @PostMapping("/reg")
     public Result register(@RequestBody UserDTO userDTO){
         log.info("用户注册:{}",userDTO);

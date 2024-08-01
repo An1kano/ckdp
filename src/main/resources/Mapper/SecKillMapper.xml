@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ckzs.ckdp.Mapper.SecKillMapper">
+    <select id="getTodayEvents" resultType="org.ckzs.ckdp.pojo.SecKillEvent">
+        <![CDATA[
+            SELECT *
+            FROM seckillevents
+            WHERE endTime >= #{today}
+            AND startTime < DATE_ADD(#{today},INTERVAL 1 DAY)
+            ORDER BY startTime ASC
+            ]]>
+    </select>
+    <select id="getEventById" resultType="org.ckzs.ckdp.pojo.SecKillEvent">
+        SELECT *
+        FROM seckillevents
+        WHERE id = #{id}
+    </select>
+    <update id="decrementStock">
+        UPDATE seckillevents
+        SET stock = stock - 1
+        WHERE id = #{eventId} AND stock > 0
+    </update>
+</mapper>

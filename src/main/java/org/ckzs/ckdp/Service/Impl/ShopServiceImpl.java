@@ -65,6 +65,7 @@ public class ShopServiceImpl implements ShopService {
 
         redisTemplate.opsForValue().set(cacheKey,JSON.toJSONString(shopVO));
 
+
         return shopVO;
     }
 

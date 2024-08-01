@@ -18,3 +18,17 @@ spring:
       database: 1
 mybatis:
   mapperLocations: classpath:mapper/*.xml
+rocketmq:
+  name-server: 192.168.112.129:9876
+  producer:
+    group: ckdp-producer
+  consumer:
+    group: ckdp-consumer
+
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api/docs # 默认/v3/api-docs
+  swagger-ui:
+    path: /api/ui #自定义swagger-ui HTML文档路径

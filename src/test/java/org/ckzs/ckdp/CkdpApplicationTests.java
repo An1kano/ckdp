@@ -3,6 +3,7 @@ package org.ckzs.ckdp;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.ckzs.ckdp.MQ.TestProducer;
 import org.ckzs.ckdp.pojo.JwtProfile;
 import org.ckzs.ckdp.pojo.Shop;
 import org.junit.jupiter.api.Test;
@@ -23,6 +24,10 @@ class CkdpApplicationTests {
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplateObject;
+    @Autowired
+    private TestProducer testProducer;
     @Test
     public void testRedis() {
         // 设置值
@@ -75,6 +80,18 @@ class CkdpApplicationTests {
         String password= (String) reclaims.get("password");
         System.out.println("用户名："+username);
         System.out.println("密码："+password);
+    }
+    @Test
+    public void MQTest() throws InterruptedException {
+        testProducer.sendMessage("test","测试消息");
+        Thread.sleep(10000);
+    }
+    @Test
+    public void testStock(){
+        String cacheKey="StockOfEventId:2";
+        int stock=(int)redisTemplateObject.opsForValue().get(cacheKey);
+        System.out.println(stock);
+        redisTemplateObject.opsForValue().decrement(cacheKey);
     }
 }
 

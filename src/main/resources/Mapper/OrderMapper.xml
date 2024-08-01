@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ckzs.ckdp.Mapper.OrderMapper">
+    <insert id="insert" parameterType="org.ckzs.ckdp.pojo.Order">
+        INSERT INTO orders (order_id, user_id, product_id, create_time)
+        VALUES (#{orderId}, #{userId}, #{productId}, #{createTime})
+    </insert>
+</mapper>
